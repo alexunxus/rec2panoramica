@@ -36,6 +36,7 @@ private:
     
     //Related to mapping
     void rec2circle();
+	void trimCirBorder();
 	void invert();
     
     
