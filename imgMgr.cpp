@@ -31,24 +31,45 @@ imgMgr::read(const char s[]) {
 
 void
 imgMgr::rec2panoramic() {
-    _mapx.create(_img->size(), CV_32FC1);//why CV_32FC1 ??
-    _mapy.create(_img->size(), CV_32FC1);
-    rec2circle();
+    _mapx.create(_img->rows*2, _img->rows*2, CV_32FC1);//why CV_32FC1 ??
+    _mapy.create(_img->rows*2, _img->rows*2, CV_32FC1);
+	//_img->at<cv::Scalar>(0, 0) = cv::Scalar(255, 255, 255, 0);
+	
+	rec2circle();
     _oImg = new cv::Mat(_img->rows*2, _img->rows*2, _img->type());
-    //*_oImg = cv::Scalar(255,255,255,0);
     cv::remap(*_img, *_oImg, _mapx, _mapy, CV_INTER_LINEAR, BORDER_CONSTANT);
 }
+
+
+void
+imgMgr::invert() {
+    size_t i, j;
+	for(i = 0; i < _img->cols; i++) {
+	    for(j = 0; j < _img->rows; j++) {
+		    _mapx.at<float>(j, i) = i;
+			_mapy.at<float>(j, i) = _img->rows - j;
+		}
+	}
+}
+
 void
 imgMgr::rec2circle() {
     int i, j;
-    size_t a = _img->cols;
-    size_t b = _img->rows;
+    float a = _img->cols;
+    float b = _img->rows;
     assert(a!=0 && b!=0);
-    i = j = 0;
-    for(i = 0; i < _img->cols; i++) {
-        for (j = 0; j < _img->rows; j++) {
-            _mapx.at<float>(j, i) = (b - j -1) * cos(PI*i/a) + b;
-            _mapy.at<float>(j, i) = (b - j -1) * sin(PI*i/a) + b;
+	cout << "row = " << _img->rows << endl;
+	cout << "col = " << _img->cols << endl;
+	// x' = (b-1-y)cos(pi*x/(a-1)) + b
+	// y' = (b-1-y)sin(pi*x/(a-1)) + b
+    for(i = 0; i < 2*b; i++) {// i is x
+        for (j = b; j < b+sqrt((b-1)*(b-1)-(i-b)*(i-b)); j++) {//j is y
+			if(i >=b ) {
+				_mapx.at<float>(j, i)=_mapx.at<float>(2*b-j, i)=(a-1)/PI*atan((j-b)/(i-b));			
+			}
+            else
+				_mapx.at<float>(j, i)=_mapx.at<float>(2*b-j, i)=(a-1)/PI*(PI + atan((j-b)/(i-b)));
+			_mapy.at<float>(j, i)=_mapy.at<float>(2*b-j, i)= b-1 - sqrt((i-b)*(i-b)+(j-b)*(j-b));
         }
     }
 }
@@ -62,14 +83,15 @@ imgMgr::show() {
 void
 imgMgr::showOutputImg() const {
     namedWindow(_name, WINDOW_AUTOSIZE);
-    resizeWindow(_name, 1, 1);
+    resizeWindow(_name, 60, 60);
     imshow(_name, *_oImg);
     waitKey(0);
+	saveOutput();
 }
 void
 imgMgr::saveOutput() const {
-    //some problem with imwrite
-    imwrite(_name+"_pan", *_oImg);
+    //some problem with imwrite, solved by changing g++ to clang++
+    imwrite("pan"+_name, *_oImg);
     
 }
 

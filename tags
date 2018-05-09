@@ -1,0 +1,52 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CC	Makefile	/^CC = clang++$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -g -Wall -std=c++11$/;"	m
+DEPS	Makefile	/^DEPS = imgMgr.h myUsage.h myString.cpp$/;"	m
+IMG_MGR_H	imgMgr.h	/^#define IMG_MGR_H$/;"	d
+MYCLK_TCK	myUsage.h	/^#define MYCLK_TCK /;"	d
+MYCLK_TCK	myUsage.h	/^#undef MYCLK_TCK$/;"	d
+MY_USAGE_H	myUsage.h	/^#define MY_USAGE_H$/;"	d
+MyUsage	myUsage.h	/^   MyUsage() { reset(); }$/;"	f	class:MyUsage
+MyUsage	myUsage.h	/^class MyUsage$/;"	c
+OBJS	Makefile	/^OBJS = main.o imgMgr.o$/;"	m
+OPENCV	Makefile	/^OPENCV = `pkg-config --cflags --libs opencv` $/;"	m
+PI	imgMgr.cpp	/^#define PI /;"	d	file:
+TARGET	Makefile	/^TARGET = myImg$/;"	m
+_currentMem	myUsage.h	/^   double     _currentMem;$/;"	m	class:MyUsage
+_currentTick	myUsage.h	/^   double     _currentTick;$/;"	m	class:MyUsage
+_img	imgMgr.h	/^    cv::Mat *   _img;$/;"	m	class:imgMgr
+_initMem	myUsage.h	/^   double     _initMem;$/;"	m	class:MyUsage
+_mapx	imgMgr.h	/^    cv::Mat     _mapx;$/;"	m	class:imgMgr
+_mapy	imgMgr.h	/^    cv::Mat     _mapy;$/;"	m	class:imgMgr
+_name	imgMgr.h	/^    string      _name;$/;"	m	class:imgMgr
+_oImg	imgMgr.h	/^    cv::Mat *   _oImg;$/;"	m	class:imgMgr
+_periodUsedTime	myUsage.h	/^   double     _periodUsedTime;$/;"	m	class:MyUsage
+_totalUsedTime	myUsage.h	/^   double     _totalUsedTime;$/;"	m	class:MyUsage
+checkMem	myUsage.h	/^   double checkMem() const {$/;"	f	class:MyUsage
+checkTick	myUsage.h	/^   double checkTick() const {$/;"	f	class:MyUsage
+imgMgr	imgMgr.h	/^    imgMgr(): _img(NULL), _oImg(NULL){}$/;"	f	class:imgMgr
+imgMgr	imgMgr.h	/^class imgMgr$/;"	c
+invert	imgMgr.cpp	/^imgMgr::invert() {$/;"	f	class:imgMgr
+isValidVarName	myString.cpp	/^isValidVarName(const string& str)$/;"	f
+main	main.cpp	/^int main(int argc, const char * argv[]) {$/;"	f
+myStr2Int	myString.cpp	/^myStr2Int(const string& str, int& num)$/;"	f
+myStrGetTok	myString.cpp	/^myStrGetTok(const string& str, string& tok, size_t pos = 0,$/;"	f
+myStrNCmp	myString.cpp	/^myStrNCmp(const string& s1, const string& s2, unsigned n)$/;"	f
+myexit	main.cpp	/^myexit()$/;"	f	file:
+read	imgMgr.cpp	/^imgMgr::read(const char s[]) {$/;"	f	class:imgMgr
+rec2circle	imgMgr.cpp	/^imgMgr::rec2circle() {$/;"	f	class:imgMgr
+rec2panoramic	imgMgr.cpp	/^imgMgr::rec2panoramic() {$/;"	f	class:imgMgr
+report	myUsage.h	/^   void report(bool repTime, bool repMem) {$/;"	f	class:MyUsage
+reset	myUsage.h	/^   void reset() {$/;"	f	class:MyUsage
+saveOutput	imgMgr.cpp	/^imgMgr::saveOutput() const {$/;"	f	class:imgMgr
+setMemUsage	myUsage.h	/^   void setMemUsage() { _currentMem = checkMem() - _initMem; }$/;"	f	class:MyUsage
+setTimeUsage	myUsage.h	/^   void setTimeUsage() {$/;"	f	class:MyUsage
+show	imgMgr.cpp	/^imgMgr::show() {$/;"	f	class:imgMgr
+showOutputImg	imgMgr.cpp	/^imgMgr::showOutputImg() const {$/;"	f	class:imgMgr
+usage	main.cpp	/^usage()$/;"	f	file:
+~imgMgr	imgMgr.cpp	/^imgMgr::~imgMgr() { if (_img != NULL) delete _img; _img = NULL; }$/;"	f	class:imgMgr
