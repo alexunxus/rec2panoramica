@@ -5,7 +5,7 @@ Input image:
 ![alt text](./river.jpg?raw=true "River.jpg")
 
 Output image:
-![alt text](./panriver.png?raw=true "panriver.jpg")
+![alt text](./panriver.jpg?raw=true "panriver.jpg")
 
 1. One first put the image one wants to process in the same directory
 2. Secondly, one opens terminal and changes directory (using cd) to the directory containing this python file
