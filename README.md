@@ -1,5 +1,8 @@
 # rec2panoramica
-C++ version of rec2panoramic
+
+It is a side project for me to transform a normal(rectangular) image into a panoramic(circular) image. I found implementing through C++ is way faster than using Python. The concept is easy. We have to tell for each pixel on the target image, can where is the corresponding points on the source image.
+
+# User Guide
 
 Input image:
 ![alt text](./river.jpg?raw=true "River.jpg")
